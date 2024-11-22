@@ -1,0 +1,173 @@
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+
+export const Header = () => {
+  const [hidden,sethidden]=useState(true)
+
+  // Retrieve the initial dark mode state from local storage or default to false
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const storedMode = localStorage.getItem('isDarkMode');
+    return storedMode ? JSON.parse(storedMode) : false;
+  });
+
+  const activeclass = "block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500";  
+  const notActiveclass = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
+
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  // Apply the theme on initial load based on the state
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('isDarkMode', JSON.stringify(true));
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('isDarkMode', JSON.stringify(false));
+    }
+  }, [isDarkMode]);
+
+  return (
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 sticky top-0 z-50">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GetDataBack</span>
+        </NavLink>
+        <div className="flex items-center space-x-3 md:order-2">
+          <button
+            type="button"
+            onClick={toggleDarkMode}
+            className="text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600 p-2 rounded-lg"
+          >
+            {isDarkMode ? (
+              <svg className="w-6 h-6 text-yellow-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 3a7 7 0 011.5 13.898 5.75 5.75 0 000-11.798A6.975 6.975 0 0110 3zM10 1a8.971 8.971 0 00-7.192 3.263 9.752 9.752 0 0010.57 10.566A9.978 9.978 0 0010 1z" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6 text-gray-900 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1zM4.929 4.929a1 1 0 011.414 0l1.414 1.414a1 1 0 01-1.414 1.414L4.929 6.343a1 1 0 010-1.414zM1 10a1 1 0 011-1h2a1 1 0 010 2H2a1 1 0 01-1-1zM4.929 15.071a1 1 0 000 1.414l1.414 1.414a1 1 0 001.414-1.414l-1.414-1.414a1 1 0 00-1.414 0zM10 18a1 1 0 011 1v2a1 1 0 01-2 0v-2a1 1 0 011-1zM15.071 15.071a1 1 0 011.414 0l1.414 1.414a1 1 0 11-1.414 1.414l-1.414-1.414a1 1 0 010-1.414zM18 10a1 1 0 011-1h2a1 1 0 010 2h-2a1 1 0 01-1-1zM15.071 4.929a1 1 0 000-1.414l-1.414-1.414a1 1 0 00-1.414 1.414L13.657 4.93a1 1 0 001.414 0z"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+       
+        
+        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+              <NavLink to="/" className={({ isActive }) => isActive ? activeclass : notActiveclass} end>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className={({ isActive }) => isActive ? activeclass : notActiveclass}>About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/services" className={({ isActive }) => isActive ? activeclass : notActiveclass}>Services</NavLink>
+            </li>
+            <li>
+              <NavLink to="/review" className={({ isActive }) => isActive ? activeclass : notActiveclass}>Client Review</NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" className={({ isActive }) => isActive ? activeclass : notActiveclass}>Contact Us</NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+
+
+contact---
+import React from 'react'
+import { useTitle } from '../../hooks/useTitle'
+import Logo from "../Images/cmr1.avif" // Make sure the image path is correct
+import { useRef } from 'react'
+
+export const Contact = () => {
+  useTitle("Contact")
+  const name=useRef()
+  // console.log(name.current.value)
+  return (
+    <main className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-800 bg-cover bg-center"
+      style={{ backgroundImage: `url(${Logo})` }}
+    >
+      <div className="w-full max-w-md p-8  space-y-4 bg-white rounded-lg shadow dark:bg-gray-700 bg-opacity-80">
+        <section>
+          <p className="text-2xl text-center font-semibold dark:text-slate-100 my-2 underline underline-offset-8 underline-thick decoration-purple-500">
+            Get In Touch
+          </p>
+        </section>
+        <form className="space-y-6 ">
+          {/* Name Input */}
+          <div>
+            <label htmlFor="name" className="block mb-2 text-sm font-medium dark:text-white">Your Name</label>
+            <input 
+              ref={name}
+              type="text" 
+              id="name" 
+  className="block w-full h-22 pr-5 pl-3 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-900 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              placeholder="Arun Sharma" 
+              required 
+              autoComplete="off" 
+            />
+          </div>
+
+          {/* Email Input */}
+          <div>
+            <label htmlFor="email" className="block mb-2 text-sm font-medium dark:text-white">Your Email</label>
+            <input 
+              type="email" 
+              id="email" 
+               className="block w-full h-22 pr-5 pl-3 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-900 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              placeholder="arsharma@example.com" 
+              required 
+              autoComplete="off" 
+            />
+          </div>
+
+          {/* Phone Number Input */}
+          <div className="relative mb-6">
+            <label className="flex items-center mb-2 text-sm font-medium dark:text-white">Phone Number</label>
+            <div className="relative dark:text-gray-500 focus-within:text-gray-900 mb-6">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg className="stroke-current text-gray-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.02623 10.2611L12.7387 17.9736C14.4091 19.6439 17.1173 19.6439 18.7877 17.9736C19.4559 17.3054 19.4559 16.2221 18.7877 15.554L16.6454 13.4116C16.1582 12.9244 15.3683 12.9244 14.8811 13.4116C14.3939 13.8988 13.604 13.8988 13.1168 13.4116L9.23534 9.53015C8.74814 9.04295 8.74814 8.25305 9.23534 7.76585C9.72253 7.27865 9.72253 6.48875 9.23534 6.00155L7.44584 4.21205C6.77768 3.5439 5.69439 3.5439 5.02623 4.21205C3.35584 5.88244 3.35584 8.59067 5.02623 10.2611Z" stroke="" strokeWidth="1.6" />
+                </svg>
+              </div>
+              <input
+                type="tel"
+                id="phone-number"
+                className="block w-full h-11 pr-5 pl-12 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-900 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="Enter Phone Number"
+                pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+              />
+            </div>
+          </div>
+
+          {/* Message Textarea */}
+          <div className="relative mb-1">
+            <label className="flex items-center mb-2 text-sm font-medium dark:text-white">Message</label>
+            <div className="relative text-gray-500 focus-within:text-gray-900 mb-6">
+              <textarea
+                id="message"
+                className="block w-full h-22 pr-5 pl-3 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-900 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                placeholder="Enter your message"
+              ></textarea>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Enquire Now
+          </button>
+        </form>
+      </div>
+    </main>
+  )
+}
