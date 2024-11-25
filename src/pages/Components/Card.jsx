@@ -26,7 +26,7 @@ export const Card = () => {
           <div className="p-5 h-48">
             <a href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Noteworthy technology acquisitions 2021
+              HDD & SSD
               </h5>
             </a>
             <p className="mb-1 font-normal text-gray-700 dark:text-gray-400">
@@ -35,7 +35,7 @@ export const Card = () => {
           </div>
           <div className="p-5">
             <a
-              href="#"
+              href="https://support.microsoft.com/en-us/windows/all-about-ssd-hdd-and-storage-types-9c6c7c59-7d1c-4611-9ba9-676d53cc0ff1#:~:text=Solid%2Dstate%20drives%20(SSDs),more%20common%20in%20older%20devices."
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Read more
@@ -66,7 +66,7 @@ export const Card = () => {
           <div className="p-5 h-48">
             <a href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Key trends in enterprise technology 2022
+              NAS & RAID ARRAY
               </h5>
             </a>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -75,7 +75,7 @@ export const Card = () => {
           </div>
           <div className="p-5">
             <a
-              href="#"
+              href="https://massive.io/file-transfer/nas-vs-raid/#:~:text=Network%2Dattached%20storage%20(NAS),and%20archive%20extremely%20large%20files."
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Read more
