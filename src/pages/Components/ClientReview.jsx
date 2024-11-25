@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTitle } from '../../hooks/useTitle';
 
 export const ClientReview = () => {
+
   return (
     <div className="py-8 px-10 dark:bg-gray-800">
       <h2 className="text-4xl text-center mb-8 font-bold dark:text-white underline  underline-offset-8 decoration-purple-500">OUR HAPPY CLIENTS</h2>
