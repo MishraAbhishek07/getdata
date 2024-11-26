@@ -3,7 +3,7 @@ import { Link,NavLink } from 'react-router-dom'
 
 export const Footer = () => {
   return (
-   
+    // https://script.google.com/macros/s/AKfycby-CHGpW1n-pcJvvmAmna-aVUjZZ8eAGj2fvqxszJUgf0MApoz3TuAjz4gP_-AEHjujjw/exec
 
 <footer className="bg-white dark:bg-gray-900">
     <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">

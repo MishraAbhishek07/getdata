@@ -68,3 +68,7 @@ const MyForm = () => {
 };
 
 export default MyForm;
+{/* <input type="hidden" name="entry.2138443190" value=""></input>
+<input type="hidden" name="entry.1511439778" value=""></input>
+<input type="hidden" name="entry.373337114" value=""></input>
+<input type="hidden" name="entry.1480177232" value=""></input> */}
