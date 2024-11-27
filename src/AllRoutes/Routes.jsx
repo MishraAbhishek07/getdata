@@ -1,3 +1,4 @@
+import React from 'react'; // Add this line
 import { Routes, Route } from "react-router-dom";
 import {HomePage} from "../pages/HomePage"
 import { Card } from "../pages/Components/Card";

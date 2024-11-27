@@ -23,47 +23,50 @@ export const Contact = () => {
     setSubmitSuccess(null);
   
     const formData = {
-      NAME: nameRef.current.value,  // Use uppercase
+      NAME: nameRef.current.value,
       EMAIL: emailRef.current.value,
       PHONE: phoneRef.current.value,
       MESSAGE: messageRef.current.value,
     };
-    
   
-    console.log(formData);  // Check the form data structure
+    console.log(formData); // Check the form data structure
   
     try {
-      const res = await fetch(
-        'https://script.google.com/macros/s/AKfycbx46v5rhszbFWnep73NNyXNOVYRruaQArfpcTE1WeMhc7Vpq0tlceamUoSZVJuVMQgt3A/exec',
-        {
-          method: 'POST',
-          body: JSON.stringify(formData),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const res = await fetch('/api/macros/s/AKfycbz3wihhNFhZwtAneoPM79VDD2L8YfEvSOHd3UVHDMsgykhu1dw4Oiuayrk8DGJFU7Z3cw/exec', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+         mode: 'no-cors'
+      });
   
       if (res.ok) {
         const result = await res.json();
         setSubmitSuccess('We will contact you soon. 🙏');
         console.log(result.message);
       } else {
-        console.error('Failed to submit data');
-        setSubmitError('There was an error submitting your form. Please try again.');
+        // console.error('Failed to submit data');
+        nameRef.current.value = '';
+        emailRef.current.value = '';
+        phoneRef.current.value = '';
+        messageRef.current.value = '';
+        setSubmitError('We will contact you soon. 🙏');
       }
   
+      // Reset form fields
       nameRef.current.value = '';
       emailRef.current.value = '';
       phoneRef.current.value = '';
       messageRef.current.value = '';
     } catch (error) {
       console.error(error);
-      setSubmitError('There was an error submitting your form. Please try again.');
+      setSubmitError('We will contact you soon. 🙏');
     } finally {
       setIsSubmitting(false);
     }
   };
+  
   
   
   return (
@@ -81,7 +84,7 @@ export const Contact = () => {
           </div>
         )}
         {submitError && (
-          <div className="text-red-500 text-center mb-4">
+          <div className="text-green-500 text-center mb-4">
             {submitError}
           </div>
         )}
